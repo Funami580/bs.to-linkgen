@@ -1,5 +1,6 @@
 import sys
 import math
+import subprocess
 import requests
 from bs4 import BeautifulSoup
 
@@ -34,5 +35,11 @@ def get_links(url: str):
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    for link in get_links(url):
+    links = get_links(url)
+    for link in links:
         print(link)
+    try:
+        add_links = subprocess.Popen(["JDownloader", "-add-links", *links],  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        add_links.communicate()
+    except Exception:
+        print("\nFailed to add links to JDownloader 2")
