@@ -4,7 +4,7 @@ import subprocess
 import requests
 from bs4 import BeautifulSoup
 
-PREFERRED_STREAMS = ["Vidoza", "Streamtape", "VOE"]
+PREFERRED_STREAMS = ["Vidoza", "VOE", "Streamtape"]
 
 def get_links(url: str):
     all_links = []
